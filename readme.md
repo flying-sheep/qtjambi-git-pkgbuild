@@ -21,7 +21,7 @@ The `jar` resides in `share/java`, so you have to add the following to your clas
 ### Eclipse
 Setup your project like so (it’s german, but you should figure it out)
 
-![Eclipse user libraries](eclipse-user-lib.png)
+![Eclipse user libraries](https://raw.github.com/flying-sheep/qtjambi-git-pkgbuild/master/eclipse-user-lib.png)
 
 ### Running the demos
 ```bash
