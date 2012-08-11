@@ -1,5 +1,5 @@
 # Qt Jambi PKGBUILD
-This Repo contains an [PKGBUILD] of [Qt Jambi] for [Archlinux].
+This Repo contains a [PKGBUILD] of the current git master version of [Qt Jambi] for [Archlinux].
 
 Its current aim is to provide Qt Jambi compiled against system Qt.
 
