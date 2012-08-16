@@ -1,6 +1,6 @@
 pkgname=qtjambi-git
 pkgver=20110929
-pkgrel=1
+pkgrel=2
 
 arch=('i686' 'x86_64')
 
@@ -17,18 +17,22 @@ conflicts=('qtjambi')
 provides=('qtjambi')
 
 build() {
-	cd "${srcdir}"
+	cd "$srcdir"
 	
 	#download latest source tarball
-	if [ -f "master" ];then
-	rm master
+	if [ -f "master" ]; then
+		rm master
 	fi
 	wget http://qt.gitorious.org/qt-jambi/qtjambi-community/archive-tarball/master
-	tar -xf master
-	if [ $? -eq 2 ]; then
-		cat master
+	if [[ $(file --mime-type -b master) = "text/plain" ]]; then
+		echo "Source currently not available. Cause:" 1>&2
+		cat master 1>&2
+		rm master
+		exit 1
 	fi
-	cd qt-jambi-qtjambi-community
+	tar -xf master --strip-components=1 -C qtjambi-git
+	
+	cd $pkgname
 	
 	#patch build.properties
 	patch -p0 < "$srcdir/build.patch"
@@ -37,6 +41,10 @@ build() {
 	
 	#build
 	ant all
+}
+
+package() {
+	cd "$srcdir/$pkgname"
 	
 	# Install qtjambi
 	mkdir -p "$pkgdir/usr/share/java/"
