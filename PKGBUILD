@@ -1,6 +1,6 @@
 pkgname=qtjambi-git
-pkgver=4069.56d1b1e
-_qtver=4.8.5
+pkgver=4070.3952b53
+_qtver=4.8.6
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -39,6 +39,7 @@ package() {
 	# Install qtjambi
 	install -d "$pkgdir/usr/share/java/"
 	install -m644 qtjambi-*.jar "$pkgdir/usr/share/java/"
+	install -m644 "qtjambi-$_qtver-src.zip" "$pkgdir/usr/share/java/"
 	
 	# Install qtjambi-jni
 	install -d "$pkgdir/usr/lib/jni/"
